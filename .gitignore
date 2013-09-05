@@ -1,11 +1,42 @@
-# Build and Release Folders
-bin/
-bin-debug/
-bin-release/
-
-# Other files and folders
+*.acn
+*.acr
+*.alg
+*.aux
+*.bbl
+*.bat
+*.blg
+*.dvi
+*.fdb_latexmk
+*.glg
+*.glo
+*.gls
+*.idx
+*.ilg
+*.ind
+*.ist
+*.lof
+*.log
+*.lot
+*.maf
+*.mtc
+*.mtc0
+*.nav
+*.nlo
+*.out
+*.pdfsync
+*.pdf
+*.ps
+*.snm
+*.synctex.gz
+*.toc
+*.tcp
+*.vrb
+*.xdy
+*.tdo
+*.tps
+*.fls
+.project
 .settings/
-
-# Project files, i.e. `.project`, `.actionScriptProperties` and `.flexProperties`
-# should NOT be excluded as they contain compiler settings and other important
-# information for Eclipse / Flash Builder.
+.texlipse
+*.synctex.gz*
+.DS_STORE
