@@ -1,0 +1,55 @@
+\arrayinit{relinputlayerfilepaths}
+
+
+\newcommand\lastsubstrposition{}
+\newcommand\lastindex[2]{%
+	\StrCount{#1}{#2}[\numberofsubstr]%
+	\StrPosition[\numberofsubstr]{#1}{#2}[\lastsubstrposition]%
+}
+
+
+\newcommand\relinputfilepath{}
+\newcommand\relinputfilename{}
+\newcommand\relinputtempstrlen{}
+\newcommand\relinputparseinput[1]{%
+	%get the pos of the last slash
+	\lastindex{#1}{/}%
+	
+	%Whatever's left of the last slash is the path
+	\StrLeft{#1}{\lastsubstrposition}[\relinputfilepath]%
+	
+	%Whatever's right of the last slash is the filename
+	\StrLen{#1}[\relinputtempstrlen]%
+	\StrRight{#1}{\the\numexpr\relinputtempstrlen-\lastsubstrposition}[\relinputfilename]%
+}
+
+
+\newcommand\filetoinclude{}
+\newcommand\relinput[1]{
+	%Parse the input
+	\relinputparseinput{#1}%
+	
+	%Push the path to the array
+	\arraypush{relinputlayerfilepaths}{\relinputfilepath}%
+	
+	%Create the total path to the file to be included
+	\relinputinputconcatpath{relinputlayerfilepaths}{\relinputfilename}%
+	\renewcommand\filetoinclude{\completepath}%
+	\input{\filetoinclude}%
+	
+	%Delete the last index in the array
+	\arraydeletelast{relinputlayerfilepaths}%
+}
+
+
+\global\def\completepath{}
+\newcounter{concatpathcounter}
+\newcommand\relinputinputconcatpath[2]{
+	\global\edef\completepath{}%
+	\setcounter{concatpathcounter}{0}%
+	\loop\ifnum\value{concatpathcounter}<\value{#1-cnt}%
+		\stepcounter{concatpathcounter}%
+		\global\edef\completepath{\completepath\arraygetvalue{#1}{\arabic{concatpathcounter}}}%
+	\repeat%
+	\global\edef\completepath{\completepath#2}%
+}

@@ -1,0 +1,11 @@
+\newcounter{tempcount} % for temporary usage
+
+\newcommand\arrayloop[1]{%
+\setcounter{tempcount}{0}%
+	Looping \arabic{tempcount} to \arabic{#1-cnt}%
+	
+	\loop\ifnum\value{tempcount}<\value{#1-cnt}%
+		\stepcounter{tempcount}%
+		\arraygetvalue{#1}{\arabic{tempcount}} \\ %
+	\repeat%
+}

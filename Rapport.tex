@@ -1,0 +1,46 @@
+% Header
+\input{Header}
+
+% Document root
+\begin{document}
+
+%Forside + random hacks for isolated env
+\begin{titlepage}
+\input{Frontpage}
+\thispagestyle{empty}
+\end{titlepage}
+\newpage
+\thispagestyle{empty}
+\mbox{}
+% AAU Titelblad
+% Muligt at indsætte denne i PDF'ens indholdsfortegnelse?
+\input{Titlepage}
+\newpage
+\thispagestyle{empty}
+\mbox{}
+
+\addtocontents{toc}{\protect\enlargethispage{-35mm}} %lav en margin i bunden af den forste side af TOC
+\addtocontents{toc}{\protect\thispagestyle{empty}} % fjern fra første side af TOC
+\tableofcontents
+\thispagestyle{empty} %fjern sidetal for den anden side af TOC
+
+%Fix page counter
+\setcounter{page}{4}
+
+%Indledning
+\relinput{Content/Introduction/Introduction}
+
+%ProblemAnalyse
+\relinput{Content/ProblemAnalysis/ProblemAnalysis}
+
+%Projektafgrænsning
+\relinput{Content/ProjectBoundary/ProjectBoundary}
+
+
+% Kilder
+%\bibliographystyle{plain}
+%\bibliography{References}
+
+%\input{Indhold/Appendix/Appendix}
+
+\end{document}

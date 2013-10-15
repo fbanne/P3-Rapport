@@ -1,0 +1,95 @@
+\documentclass[12pt,a4paper]{report}
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage[english]{isodate}
+\usepackage[english]{babel}
+\usepackage{url}
+\usepackage{color}
+\usepackage{ulem}
+\usepackage{titlesec}
+\usepackage{hyperref}
+\usepackage{float}
+\usepackage{tabularx}
+\usepackage{ucs}
+
+% lstlisting to show code nicely
+\usepackage{listings}
+
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{mygray}{rgb}{0.5,0.5,0.5}
+\definecolor{mymauve}{rgb}{0.58,0,0.82}
+
+\lstset{
+  backgroundcolor=\color{white},   % choose the background color; you 
+  %basicstyle=\footnotesize,
+  basicstyle=\ttfamily,            % the size of the fonts that are used 
+  breakatwhitespace=false,         % sets if automatic breaks should 
+  breaklines=true,                 % sets automatic line breaking
+  captionpos=b,                    % sets the caption-position to bottom
+  commentstyle=\color{mygreen},    % comment style
+  deletekeywords={...},            % if you want to delete keywords from 
+  escapeinside={\%*}{*)},          % if you want to add LaTeX within 
+  inputencoding=utf8x,
+  extendedchars=true,              % lets you use non-ASCII characters; 
+  frame=single,                    % adds a frame around the code
+  keepspaces=true,                 % keeps spaces in text, useful for 
+  keywordstyle=\color{blue},       % keyword style
+  language={[Sharp]C},             % the language of the code
+  morekeywords={*,...},            % if you want to add more keywords to 
+  numbers=left,                    % where to put the line-numbers; 
+  numbersep=5pt,                   % how far the line-numbers are from 
+  numberstyle=\tiny\color{mygray}, % the style that is used for the 
+  rulecolor=\color{black},         % if not set, the frame-color may be 
+  showspaces=false,                % show spaces everywhere adding 
+  showstringspaces=false,          % underline spaces within strings 
+  showtabs=false,                  % show tabs within strings adding 
+  stepnumber=2,                    % the step between two line-numbers. 
+  stringstyle=\color{mymauve},     % string literal style
+  tabsize=2,                       % sets default tabsize to 2 spaces
+  title=\lstname,                  % show the filename of files included 
+  literate={æ}{{\ae}}1
+           {ø}{{\o}}1
+           {å}{{\aa}}1
+           {Æ}{{\AE}}1
+           {Ø}{{\O}}1
+           {Å}{{\AA}}1
+}
+
+
+
+% Fonts
+\usepackage{helvet} % <-- Helvetica (sans)
+\usepackage[sc]{mathpazo} % <-- Palatino (serif)
+\linespread{1.05}   % Extra linespread for Palatino
+
+% Extra settings
+% \setlength\parindent{0pt} % For at fjerne automatiske indrykninger
+% \let\clearpage\relax % For at fjerne alle clearpage sideskift
+
+% Meta (til titelblad)
+% HUSK; at rette Jonas i titelbladet.
+\newcommand{\rtitle}{Elektroniske Lommepenge} %<----
+\newcommand{\rtheme}{Programmering og problemløsning}
+\newcommand{\rperiod}{P2, 2013}
+\newcommand{\rdeadline}{22. maj 2013} %<----Erstattes med rapportens deadline
+\newcommand{\rprints}{10} %<---- Erstattes med oplægsantal
+\newcommand{\rappendices}{2 + 1 CD} %<---- Erstattes med bilagsantal og art
+\newcommand{\rlastpage}{60} %<---- Erstattes med sideantal
+
+%\newcommand{\code}[1]{\lstinline!#1!}
+\newcommand{\code}[1]{\lstinline{#1}} %<---- Er fikset, skriver nu i mono :). (Skulle gerne skrive tekst i mono, til klasse navne. Ser ikke ud til at virke)
+
+%%Jonas
+\usepackage{lastpage}
+
+%relinput
+\usepackage{xstring}
+\input{relinput/simplearray}
+%\input{relinput/simplearray-debug} %Enable this for debug..
+\input{relinput/relinput}
+
+%Forside stuff
+\definecolor{Sapphire}{RGB}{28,117,188}
+\usepackage[x11names,rgb,usenames,dvipsnames,svgnames,table]{xcolor}

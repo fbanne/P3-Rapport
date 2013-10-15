@@ -1,0 +1,52 @@
+\usepackage{etoolbox}
+
+%Init a new array
+% #1 = array name
+\newcommand\arrayinit[1]{%
+	\newcounter{#1-cnt}%
+}
+
+%set a value in an array
+% #1 = array name
+% #2 = array index
+% #3 = new value
+\newcommand\arraysetvalue[3]{%
+	\cslet{#1-#2}{#3}%
+}
+
+%append new value to the end af array - push
+% #1 = array name
+% #2 = append value
+\newcommand\arraypush[2]{%
+	\stepcounter{#1-cnt}%
+	\arraysetvalue{#1}{\arabic{#1-cnt}}{#2}
+}
+
+%Get value at position
+% #1 = array name
+% #2 = array index
+% NB: To use counters, do: \arraygetvalue{ARR}{\arabic{COUNTER}}
+\newcommand\arraygetvalue[2]{%
+	\csuse{#1-#2}%
+}
+
+%Delete value at position
+% #1 = array name
+% #2 = array index
+\newcommand\arraydeletevalue[2]{%
+	\csundef{#1-#2}%
+}
+
+%Delete the last index
+% #1 = array name
+\newcommand\arraydeletelast[1]{%
+	\arraydeletevalue{#1}{\arabic{#1-cnt}}%
+	\addtocounter{#1-cnt}{-1}%
+}
+
+%Get last value in array and delete the last index; pop
+% #1 = array name
+\newcommand\arraypop[1]{%
+	\arraygetvalue{#1}{\arabic{#1-cnt}}%
+	\arraydeletelast{#1}%
+}
