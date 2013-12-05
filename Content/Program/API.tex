@@ -1,0 +1,13 @@
+In order to get the media data which is needed for the application to run at an acceptable precision level it was needed to access several open-source (that is databases that allows access without requiring payment) media databases. The interface used to communicate with these databases is called an API (Application programming interface). This allows users access to their data in an easy and controlled way. The term API is used in several different contexts[REF1]. The databases which was needed needed to access uses an API integrated with HTTP, so to access different data there had to be sent HTTP-requests. When the database receives these requests and recognises it, it sends the data requested back. Most commonly the data is returned in either XML or JSON (JavaScript Object Notation).
+
+We were unable to find any single database that offered all three of the featured media (those being; movies, video games and books) in this system, so we had to use three different. This was not a big problem since once the code to create and send a HTTP-request was done interpreting the answer was the only additional code needed.  The following three databases were used:
+
+\begin{itemize}
+	\item https://www.themoviedb.org/
+	\item http://isbndb.com/
+	\item http://thegamesdb.net/
+\end{itemize}
+
+TheMovieDb and isbndb both required an developer key to access their API. In both instances there was no problem to get the key. You simply had to register a user with the respective services. 
+
+Right these are simple used to get data for which we can use in our prototype, but it could also be a way to continually update our systems collection of media, so it stays up to date, and available to users.

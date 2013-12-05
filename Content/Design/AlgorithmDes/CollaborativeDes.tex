@@ -1,0 +1,59 @@
+\textbf{Pearson}
+
+The pearson product-moment correlation coefficient, or just pearson correlation coefficient, is a way to measure the linear relation, or dependence, between the sets of two variables. This measure can be used to determines the relationship between things like age and blood sugar, height and efficiency in basketball, and how similar people are, based on their taste in media.
+
+The pearson correlation coefficient creates a linear line of best fit for the two variables, and based on this linear line of best fit, returns a coefficient, which is how much the data of the two variables deviate from this linear line. In Figure \ref{Pearson2} you can see what kind of pattern of data will generate positive, negative, and no correlation using the pearson correlation coefficient.
+
+\begin{figure}[htb]
+\centering
+\includegraphics[width=0.8\textwidth]{Images/pearson2.png}
+\caption{Showing how two data sets can give differnt Pearson results}
+\label{Pearson2}
+\end{figure}
+
+The returned coefficient can be in the range of -1 to 1, where -1 is a complete negative relation, 1 is a complete positive relation, and 0 is no relation. Inside this range, there is varying degree of positive and negative relation, with the range of -1 to 0 being negative, and 0 to 1 being positive. This can be seen in Table \ref{PearsonStr}. Pearson very rarely returns perfect relations -1 and 1, and no relation 0.
+
+\begin{table}[htb]
+\centering
+\begin{tabular}{|l|l|l|} \hline
+	\textbf{Strength} & \textbf{Positive Relation} & \textbf{Negative Relation} \\ \hline
+	\textbf{Weak} & 0.1 to 0.3 & -0.1 to -0.3 \\ \hline
+	\textbf{Medium} & 0.3 to 0.5 & -0.3 to -0.5 \\ \hline
+	\textbf{Strong} & 0.5 to 1 & -0.5 to 1 \\ \hline
+\end{tabular}
+\caption{Pearons strength scale}
+\label{PearsonStr}
+\end{table}
+
+In a graph representation, the positive relation would be a linear line going upwards, the negative relation would be a linear line going downwards, and the no relation would be a horizontal line. This can be seen in Figure \ref{Pearson1}. A perfect 1 or -1  relation would be if every point in the graph was placed on the line.
+
+\begin{figure}[htb]
+\centering
+\includegraphics[width=0.8\textwidth]{Images/pearson1.png}
+\caption{Showing line representations of data sets, and their correlation}
+\label{Pearson1}
+\end{figure}
+
+In the context of this project and its possible product, the two variables which would be examined by pearson, is two different people, who uses the product. Pearson would then find the relations between these two people, and use that coefficient as basis for the recommendation process. The data sets it would take in from the two persons, would be the rating they’ve given to the same pieces of media. A point on the graph representation would then be two ratings for the same piece of media. The returned coefficient is then going to be how similar their rating are, and their rating habits. Using the rating given to the media in the product means that pearson is going to supplement the collaborative filtering in the recommendation process.
+
+The calculation to create the pearson correlation coefficient can be seen in Figure \ref{PearsonCalc}. In this calculation, x is the set of ratings from the first person, y is the set of ratings from the second person, n is amount of media items which is examined, and r is the returned pearson correlation coefficient.
+
+\begin{figure}[htb]
+\centering
+\includegraphics[width=0.5\textwidth]{Images/pearsonCalc.png}
+\caption{How the Pearson coefficicent is calculated}
+\label{PearsonCalc}
+\end{figure}
+
+\textbf{Spearman}
+
+Besides the pearson correlation coefficient, it was also considered to use the Spearman’s Rank correlation coefficient, which in many ways works similar to pearson, but has some significant differences. While pearson works on a linear relationship, spearman’s correlation coefficient works on a monotonic relationship. As seen in Figure \ref{Spearman}, the spearman correlation coefficient will return a perfect relation in the case that the monotonic relationship holds. In the context of this project, this property doesn’t suit to what the algorithm is supposed to find. With spearman, it could return a perfect relation, even when the two users haven’t given the same piece of media the same rating. The figure also shows the pearson correlation coefficient for the same set of data, which returns a strong, but not perfect, positive relation. This makes more sense in this context, as the peoples ratings is similar, but not exactly the same. Because of this pearson was chosen to be used in the project.
+
+\begin{figure}[htb]
+\centering
+\includegraphics[width=0.6\textwidth]{Images/spearman.png}
+\caption{How the Spearmen measure works, compared to Pearson}
+\label{Spearman}
+\end{figure}
+
+Pearson does have some problems, which can be attributed to the same problems collaborative filtering has. If there is a lack of a suitable large size of data, then pearson can generate inaccurate, and possibly wrong coefficients. For example, if two people have a small number of consumed media in common, small deviations in ratings from each person will have a larger effect on the returned coefficient. It is a problem which will fix itself slowly with time, as more data accumulates and becomes available to the calculation. Because of this it should be considered to implement a secondary part to the recommendation algorithm, to combat this possible weakness in the collaborative filtering, and work as supplement to the recommendation algorithm.
