@@ -1,6 +1,6 @@
 The usage area is how various actors interact with the system, and through that controls, documents, and observes the problem area. Actors can be any exterior entity which is connected to the usage of the system, like people, but also includes external systems. These actors have various patterns of use available to be them, which lets them perform actions with the system.
 
-\textbf{Actors \& Patterns of Use}
+\subsubsection{Actors \& Patterns of Use}
 
 For this system there is only two kind of actors: The ‘user’, and what has been named call the ‘updater’.
 
@@ -48,7 +48,7 @@ The indicate/rate media pattern of use is initiated by the user, when the user i
 
 The update media collection is either initiated in a certain interval, or when new media content is detected available for the system. This case shows the former possibility. This pattern of use starts by checking external collections upon being initiated, and will either end if no new media content was detected, or will begin retrieving said media content. After retrieving the media updated from the external collections, the pattern of use will end by adding the media updates to the systems collections. Involved objects are several media objects.
 
-\textbf{Functions}
+\subsubsection{Functions}
 
 Functions is the methods which is stands for most of the systems processing of data, and makes it possible for actors to communicate with the model of the system, through this function layer. Functions can include any of the patterns of use which has already been described, but there can also be additional functions, depending on the context of the system. For this system, there is a function called ‘Generate Recommendations’, which was excluded from the patterns of use on this case, but is still very crucial for the system. 
 
