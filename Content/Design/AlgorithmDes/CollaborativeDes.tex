@@ -1,8 +1,8 @@
 \subsubsection{Pearson}
 
-The pearson product-moment correlation coefficient, or just pearson correlation coefficient, is a way to measure the linear relation, or dependence, between the sets of two variables. This measure can be used to determine the relationship between things like age and blood sugar, height and efficiency in basketball, and how similar people are, based on their taste in media.
+The pearson product-moment correlation coefficient, or just pearson correlation coefficient, is a way to measure the linear relation, or dependence, between the variables of two sets. This measure can be used to determine the relationship between things like age and blood sugar, height and efficiency in basketball, and how similar people are, based on their taste in media. \cite{Pearson2}
 
-The pearson correlation coefficient creates a linear line of best fit for the two variables, and based on this linear line of best fit, returns a coefficient, which is how much the data of the two variables deviate from this linear line. In Figure \ref{Pearson2} you can see what kind of pattern of data will generate positive, negative, and no correlation using the pearson correlation coefficient.
+The pearson correlation coefficient creates a linear line of best fit for the two variables, and based on this linear line of best fit, returns a coefficient, which is how much the data of the two variables deviate from this linear line. In Figure \ref{Pearson2} you can see what kind of pattern of data will generate positive, negative, and no correlation using the pearson correlation coefficient. \cite{Pearson2}
 
 \begin{figure}[htb]
 \centering
@@ -11,7 +11,7 @@ The pearson correlation coefficient creates a linear line of best fit for the tw
 \label{Pearson2}
 \end{figure}
 
-The returned coefficient can be in the range of -1 to 1, where -1 is a complete negative relation, 1 is a complete positive relation, and 0 is no relation. Inside this range, there is varying degree of positive and negative relation, with the range of -1 to 0 being negative, and 0 to 1 being positive. This can be seen in Table \ref{PearsonStr}. Pearson very rarely returns perfect relations -1 and 1, and no relation 0.
+The returned coefficient can be in the range of -1 to 1, where -1 is a complete negative relation, 1 is a complete positive relation, and 0 is no relation. Inside this range, there is varying degree of positive and negative relation, with the range of -1 to 0 being negative, and 0 to 1 being positive. This can be seen in Table \ref{PearsonStr}. Pearson very rarely returns perfect relations -1 and 1, and no relation 0. \cite{Pearson2}
 
 \begin{table}[htb]
 \centering
@@ -25,7 +25,7 @@ The returned coefficient can be in the range of -1 to 1, where -1 is a complete 
 \label{PearsonStr}
 \end{table}
 
-In a graph representation, the positive relation would be a linear line going upwards, the negative relation would be a linear line going downwards, and the no relation would be a horizontal line. This can be seen in Figure \ref{Pearson1}. A perfect 1 or -1 relation would be if every point in the graph was placed on the line.
+In a graph representation, the positive relation would be a linear line going upwards, the negative relation would be a linear line going downwards, and the no relation would be a horizontal line. This can be seen in Figure \ref{Pearson1}. A perfect 1 or -1 relation would be if every point in the graph was placed on the line. \cite{Pearson1}
 
 \begin{figure}[htb]
 \centering
@@ -36,7 +36,7 @@ In a graph representation, the positive relation would be a linear line going up
 
 In the context of this project and its possible product, the two variables which would be examined by pearson, is two different people, who uses the product. Pearson would then find the relations between these two people, and use that coefficient as basis for the recommendation process. The data sets it would take in from the two persons, would be the rating they’ve given to the same pieces of media. A point on the graph representation would then be two ratings for the same piece of media. The returned coefficient is then going to be how similar their rating are, and their rating habits. Using the rating given to the media in the product means that pearson is going to supplement the collaborative filtering in the recommendation process.
 
-The calculation to create the pearson correlation coefficient can be seen in Figure \ref{PearsonCalc}. In this calculation, x is the set of ratings from the first person, y is the set of ratings from the second person, n is amount of media items which is examined, and r is the returned pearson correlation coefficient.
+The calculation to create the pearson correlation coefficient can be seen in Figure \ref{PearsonCalc}. In this calculation, x is the set of ratings from the first person, y is the set of ratings from the second person, n is amount of media items which is examined, and r is the returned pearson correlation coefficient. \cite{Pearson1}
 
 \begin{figure}[htb]
 \centering
@@ -47,7 +47,7 @@ The calculation to create the pearson correlation coefficient can be seen in Fig
 
 \subsubsection{Spearman}
 
-Besides the pearson correlation coefficient, it was also considered to use the Spearman’s Rank correlation coefficient, which in many ways works similar to pearson, but has some significant differences. Actually, Spearman is defined as the Pearson correlation coefficient, but between the ranked variables instead, which is a different way to handle the two sets of data.
+Besides the pearson correlation coefficient, it was also considered to use the Spearman’s Rank correlation coefficient, which in many ways works similar to pearson, but has some significant differences. Actually, Spearman is defined as the Pearson correlation coefficient, but between the ranked variables instead, which is a different way to handle the two sets of data. \cite{Spearman2}
 
 \begin{figure}[htb]
 \centering
@@ -56,7 +56,7 @@ Besides the pearson correlation coefficient, it was also considered to use the S
 \label{SpearCalc}
 \end{figure}
 
-The spearman correlation coefficient starts by finding two ranking lists, one for each of the sets being processed. The highest rank is either assigned to the lowest or the highest variable in each set, depending on if the set is sorted ascending or descending. The same applies to the lowest variable in each set. Every variable pair should then have a respective rank, reflecting their individual position in the sets they came from. Next, to find the d2 variable seen in Figure \ref{SpearCalc}, you find the sum of the difference between all the ranking pairs squared. See Table \ref{SpearmanEx} for an example. In the example, the sum of d2 is 194, n is the sample size of 10, and returns a correlation coefficient of -0.176, which is a low correlation.
+The spearman correlation coefficient starts by finding two ranking lists, one for each of the sets being processed. The highest rank is either assigned to the lowest or the highest variable in each set, depending on if the set is sorted ascending or descending. The same applies to the lowest variable in each set. Every variable pair should then have a respective rank, reflecting their individual position in the sets they came from. Next, to find the d2 variable seen in Figure \ref{SpearCalc}, you find the sum of the difference between all the ranking pairs squared. See Table \ref{SpearmanEx} for an example. In the example, the sum of d2 is 194, n is the sample size of 10, and returns a correlation coefficient of -0.176, which is a low correlation. \cite{Spearman2}
 
 One more thing to note about spearman is that if you have tied rankings, you have to give them the average of the ranks they otherwise would have had, and use a different way more similar to pearson to calculate the coefficient. \cite{Spearman1}
 
@@ -79,7 +79,7 @@ One more thing to note about spearman is that if you have tied rankings, you hav
 \label{SpearmanEx}
 \end{table}
 
-The coefficient generated by spearman works on the same scale pearson does, so Table \ref{PearsonStr} can again be referenced for the meanings of the coefficients. The spearman correlations coefficient is based on the monotonic relationship the two sets of data create. A monotonic relationship is when the graph representation of the data sets is either always rising or always falling, each respectively giving the perfect and negative perfect coefficient. The variable pairs which deviate from this relationship will worsen the coefficient.
+The coefficient generated by spearman works on the same scale pearson does, so Table \ref{PearsonStr} can again be referenced for the meanings of the coefficients. The spearman correlations coefficient is based on the monotonic relationship the two sets of data create\cite{Spearman2}. A monotonic relationship is when the graph representation of the data sets is either always rising or always falling, each respectively giving the perfect and negative perfect coefficient. The variable pairs which deviate from this relationship will worsen the coefficient.
 
 \subsubsection{Comparison}
 
