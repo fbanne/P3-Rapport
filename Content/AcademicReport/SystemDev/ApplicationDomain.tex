@@ -1,6 +1,6 @@
-The usage area is how various actors interact with the system, and through that controls, documents, and observes the problem area. Actors can be any exterior entity which is connected to the usage of the system, like people, but also includes external systems. These actors have various patterns of use available to be them, which lets them perform actions with the system.
+The application-domain is how various actors interact with the system, and through that controls, documents, and observes the problem-domain. Actors can be any exterior entity which is connected to the usage of the system, like people, but also includes external systems. These actors have various patterns of use available to be them, which lets them perform actions with the system.
 
-\subsubsection{Actors \& Patterns of Use}
+\subsubsection{Actors \& Use Cases}
 
 For this system there is only two kind of actors: The ‘user’, and what has been named call the ‘updater’.
 
@@ -8,9 +8,9 @@ The user is the general media interested person who uses the system to find medi
 
 The updater is an external system. Its purpose is to update the media which the system has available to it, with information coming from various sources. This is done to keep the system updated for newly released media, and made available for the users to add to their medialists. The characteristic of an updater is the media type which it keeps track of, and the sources which it extracts these data from.
 
-The patterns of use is the various actions which is the actors can perform in the usage area. The patterns of use for this is: See medialist, see friendlist, indicate/rate media, remove media, add friend, remove friend, update media collection. These have been made into a table, with actors, indicating which pattern of use belongs to which actor. See Table \ref{UseTable}.
+The patterns of use is the various actions which is the actors can perform in the application-domain. The patterns of use for this is: See medialist, see friendlist, indicate/rate media, remove media, add friend, remove friend, update media collection. These have been made into a table, with actors, indicating which use case belongs to which actor. See Table \ref{UseTable}.
 
-Among these you could also include a pattern of use called ‘Generate recommendations’. This depends on how this use is actually activated, as it may not be the most sensible choice to have this available to all users. The more sensible choice would be to activate it in certain intervals, to avoid a user abusing the action, possible slowing or crashing the system from overwork. In this it will be excluded.
+Among these you could also include a use case called ‘Generate recommendations’. This depends on how this use is actually activated, as it may not be the most sensible choice to have this available to all users. The more sensible choice would be to activate it in certain intervals, to avoid a user abusing the action, possible slowing or crashing the system from overwork. In this it will be excluded.
 
 \begin{table}[htb]
 \centering
@@ -24,29 +24,29 @@ Among these you could also include a pattern of use called ‘Generate recommend
 	\textbf{Remove Friend} & X &  \\ \hline
 	\textbf{Update Media Collection} &  & X \\ \hline
 \end{tabular}
-\caption{Pattern of Use table}
+\caption{Use Case table}
 \label{UseTable}
 \end{table}
 
-The following two figures shows patterns of use, indicate/rate media, and update media collections. These two were singled out for being the more unique patterns of use among those available, and the more crucial among them. See the first Figure \ref{IndicateMedia} for the indicate/rate media pattern of use, and Figure \ref{UpdateCollection} for the update media collection pattern of use.
+The following two figures shows patterns of use, indicate/rate media, and update media collections. These two were singled out for being the more unique patterns of use among those available, and the more crucial among them. See the first Figure \ref{IndicateMedia} for the indicate/rate media use case, and Figure \ref{UpdateCollection} for the update media collection use case.
 
 \begin{figure}[htb]
 \centering
 \includegraphics[width=0.5\textwidth]{Images/IndicateMedia.png}
-\caption{Diagram of the Indicate/Rate media pattern of use}
+\caption{Diagram of the Indicate/Rate media use case}
 \label{IndicateMedia}
 \end{figure}
 
-The indicate/rate media pattern of use is initiated by the user, when the user in questions wants to add a piece of media, together with a rating, to their medialist. The user inserts the title of a media, or some other defining characteristic, which then have to be confirmed before the pattern of use begins to check whether or not the piece of media exists in the systems collections. If the media was not in the collection, the pattern of use will stop. If they media was, it will wait for the user to indicate his rating for the media, and will then finish the pattern of use by saving it in the users medialist. Involved objects include the media interested person, and the media objects.
+The indicate/rate media use case is initiated by the user, when the user in questions wants to add a piece of media, together with a rating, to their medialist. The user inserts the title of a media, or some other defining characteristic, which then have to be confirmed before the use case begins to check whether or not the piece of media exists in the systems collections. If the media was not in the collection, the use case will stop. If they media was, it will wait for the user to indicate his rating for the media, and will then finish the use case by saving it in the users medialist. Involved objects include the media interested person, and the media objects.
 
 \begin{figure}[htb]
 \centering
 \includegraphics[width=0.5\textwidth]{Images/UpdateCollection.png}
-\caption{Diagram of the Update Media Collection pattern of use}
+\caption{Diagram of the Update Media Collection use case}
 \label{UpdateCollection}
 \end{figure}
 
-The update media collection is either initiated in a certain interval, or when new media content is detected available for the system. This case shows the former possibility. This pattern of use starts by checking external collections upon being initiated, and will either end if no new media content was detected, or will begin retrieving said media content. After retrieving the media updated from the external collections, the pattern of use will end by adding the media updates to the systems collections. Involved objects are several media objects.
+The update media collection is either initiated in a certain interval, or when new media content is detected available for the system. This case shows the former possibility. This use case starts by checking external collections upon being initiated, and will either end if no new media content was detected, or will begin retrieving said media content. After retrieving the media updated from the external collections, the use case will end by adding the media updates to the systems collections. Involved objects are several media objects.
 
 \subsubsection{Functions}
 
