@@ -1,0 +1,23 @@
+The recommendation algorithm which was created together with this project also utilizes a sorting algorithm to some degree, which is the OrderBy method made available by the .NET framework. OrderBy can be invoked through query expressions or lambda expressions on collections, and take as parameters elements, or properties from those elements, and a logical predicate for how the sorting should be done. \cite{AlgoAnal1}
+
+\subsubsection{Quicksort}
+
+The actual sorting algorithm which OrderBy implements is a stable QuickSort algorithm, which maintain the relative order of elements which is equal in accordance with the predicate. OrderBy is used during the recommendations algorithm, both in the collaborative and content-based side of the algorithm, on the coefficient generated through both processes. The algorithm actually used the OrderByDescending version, which does the same thing, except in reserve order. What is important is the coefficients, which should be sorted so they highest coefficients is placed in the front.
+
+Quicksort has a worst-case running time of $O(n^2)$, which is quite slow, but it is also very rare that quicksort encounters its worst-case scenario. Its average-case is much more likely, increasing its likelihood with the size of the collections quicksort is applied to, and has a running time of $O(nlgn)$.
+
+The most important part of the quicksort algorithm is the partition part, which divides the collection into two parts, based on a pivot element from the collection, which depends on the implementation of the algorithm. See Algorithm [REF] for the pseudo code.
+
+
+
+It shows the partition method which takes the set A, together with references to the lowest and the highest elements of the set p and r, respectively. Partition returns another reference q that points to the pivot chosen by the algorithm. The state of set A now is that all elements less than the element q points to is now on one side of q, while the elements which is higher is on the other side. Quicksort then runs itself recursively with the two new sets divided by q, where q is now sorted. The worst-case running time occurs if the chosen pivot element is also the highest element in the set every time quicksort is run. See Algorithm [REF] for the partition pseudo code.
+
+
+
+If the chosen pivot element is always the highest, the returned reference q will always be the last element in the set. This means that the recursive calls following the partition will run in respectively $n-1$ and $0$ time. If this happens through the whole course of the algorithm, the running time will be an arithmetic series\cite{AlgoAnal2},  which is $O(n^2)$.
+
+\[
+n + (n-1) + (n-2) + ... + 2 + 1 + 0 = n(n + 1) / 2 = (n^2 + n) / 2 = O(n^2)
+\]
+
+The average-case for quicksort, which is also the best-case, is whenever partition split the set so neither of the two subsets generates is empty. In this case the running time will always be $O(nlgn)$. This means that the recommendations algorithm will most likely always sort at this efficient running time, since the worst-case is rare.
