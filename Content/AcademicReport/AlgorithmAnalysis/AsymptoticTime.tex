@@ -1,0 +1,18 @@
+The general running of this of the algorithm can be analysed using asymptotic notation, which can define both the worst and average-case running time of the algorithm. The running time of the loops in Algorithms \ref{IndexUsers} \ref{CompareUserPair} can be quite erratic, as it depends on how many media a specific user have added to their medialists. The if-structure within the second loop is also an erratic number of times during the algorithm, so it is hard to pinpoint the exact average-case running time.
+
+The running time is described using Big-O notation, with expressions indicating variables inside the algorithm. Big-O notation uses the following symbols:
+\begin{itemize}
+	\item $O(n)$, an upper bound, indicating the highest running time possible.
+	\item $\Omega(n)$, a lower bound, indicating the lowest running time possible.
+	\item $\Theta(n)$, a tight bound, indicating both of the previous two running-times.
+\end{itemize}
+
+Fortunately, The worst-case running time is relatively easy to find. The worst-case would occur if every user have the exact same media indicated on their medialists. The worst-case running time is then all users in the system, except the user which the algorithm is generating recommendations for, times the subset of media which is available from all the users indicated media in their medialists. The upper bound of the algorithm can then be defined as:
+
+\[
+m(n-1) = mn - m = O(mn)
+\]
+
+Where n is all users, and m is the available media. As mentioned above, the average-case running time is harder to precisely find. What can be derived from the algorithm is that no matter what, all the users in the system will be processed, so the lower bound of the algorithm can be defined as $\Omega(n)$.
+
+The content-based part is similar, but is much more stable in its running time. The user is compared to all media in the system by comparing their vector representations, which is of equal size. The algorithm will for each media go through the size of their vector representations, which give a running time of $\Theta(mn)$, where m is all media, and n is the size of the vector representations. The running-time is tightly bound, and will never deviate from this running time.
