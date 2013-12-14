@@ -11,16 +11,17 @@ The two sets which is needed for each Pearson calculation, is the ratings of med
 	& \textbf{$x^2$} & \textbf{$y^2$} \\ \hline
 	2 & 3 & 6 & 4 & 9 \\ \hline
 	4 & 5 & 20 & 16 & 25 \\ \hline
-	6 & 5 & 56 & 64 & 49 \\ \hline\hline
+	6 & 5 & 30 & 36 & 25 \\ \hline
+	8 & 7 & 56 & 64 & 49 \\ \hline\hline
 	20 & 20 & 112 & 120 & 108 \\ \hline
 \end{tabular}
 \caption{Pearson Example}
 \label{PearsonEx}
 \end{table} 
 
-In the above example is two sets of ratings, x and y, which is then put together to create 5 sums, which also can be seen above. These sums is then used as the parameters for the Pearson calculation, together with the number of pairs, which is 4. In this example Pearson returns 0,949, which is a very good coefficient. See Listing \ref{CompareUserPair} for the part of the algorithm which finds these ratings.
+In the above example is two sets of ratings, $x$ and $y$, which is then put together to create 5 sums, which also can be seen above. These sums is then used as the parameters for the Pearson calculation, together with the number of pairs, which is 4. In this example Pearson returns 0,949, which is a very good coefficient. See Listing \ref{CompareUserPair} for the part of the algorithm which finds these ratings.
 
-\begin{lstlisting}[caption={The CompareUserPair method of the recommendation algorithm},label={CompareUserPair}]
+\begin{lstlisting}[caption={The CompareUserPair method},label={CompareUserPair}]
 private double CompareUserPair(User mainUser, User user)
 {
 	List<int> mainRating = new List<int>();

@@ -24,12 +24,12 @@ private double ConvertRating(double rating)
 
 The user can give a rating in the range of 0 til 10. The ConvertRating function will then return a number between -1 and 1, where -1 is 0 and 1 is 10. This number will then be added to the user vector in each corresponding spot where the added media has a 1. For an example, see Table \ref{AddMediaEx}.
 
-\begin{table}{htb}
+\begin{table}[htb]
 \centering
 \begin{tabular}{|l|l|l|l|l|l|l|l|} \hline
-	\textbf{Media} & \textbf{Rating} & \textbf{[0]}& \textbf{[1]}& \textbf{[2]}& \textbf{[3]}& \textbf{[4]}& \textbf{[5]} \hline
-	#3 & 7 & 0 & 0.4 & 0 & 0.4 & 0 & 0.4 \hline
-	#2 & 2 & 0 & 0.4 & -0.6 & -0.2 & -0.6 & 0.4 \hline
+	\textbf{Media} & \textbf{Rating} & \textbf{0} & \textbf{1} & \textbf{2} & \textbf{3} & \textbf{4} & \textbf{5} \\ \hline
+	Media 3 & 7 & 0 & 0.4 & 0 & 0.4 & 0 & 0.4 \\ \hline
+	Media 2 & 2 & 0 & 0.4 & -0.6 & -0.2 & -0.6 & 0.4 \\ \hline
 \end{tabular}
 \caption{User vector alteration upon adding media to their medialist}
 \label{AddMediaEx}
@@ -43,10 +43,10 @@ By comparing the vectors, you can generate a coefficient for how well a certain 
 
 \begin{table}[htb]
 \centering
-\begin{tabular}{|l||l|l|l|l|l|l|} \hline
-	\textbf{User} & 2 & 0 & 0.4 & -0.6 & -0.2 & -0.6 & 0.4 \\ \hline
-	\textbf{Media#1} & 1 & 1 & 1 & 0 & 0 & 0 \\ \hline
-	\textbf{Media#4} & 1 & 1 & 0 & 0 & 0 & 1 \\ \hline
+\begin{tabular}{|l|l|l|l|l|l|l|} \hline
+	\textbf{User} & 0 & 0.4 & -0.6 & -0.2 & -0.6 & 0.4 \\ \hline
+	\textbf{Media 1} & 1 & 1 & 1 & 0 & 0 & 0 \\ \hline
+	\textbf{Media 4} & 1 & 1 & 0 & 0 & 0 & 1 \\ \hline
 \end{tabular}
 \caption{Content Example}
 \label{ContentEx}
@@ -54,7 +54,7 @@ By comparing the vectors, you can generate a coefficient for how well a certain 
 
 The comparison is done using the cosine distance as described in Section \ref{ContentBasedDes}, and returns -0.062 for the first media item and 0.247 for the second media item. During the content-based algorithm, every media which the user haven’t already consumed, is assigned a coefficient through this method. The algorithm will then sort, and choose the media with the highest coefficients, and returns them as its recommended media. See Listing \ref{CompareVector} for the part of the algorithm which calculates this coefficient.
 
-\begin{lstlisting}[caption={The CompareVectorRepresentations method of the recommendation algorithm},label={CompareVector}]
+\begin{lstlisting}[caption={The CompareVectorRepresentations method},label={CompareVector}]
 private double CompareVectorRepresentations(List<double> userRepresentation, List<bool> mediaRepresentation, double userLength, double mediaLength, Media media)
 {
 	double commonPoints = 0;
