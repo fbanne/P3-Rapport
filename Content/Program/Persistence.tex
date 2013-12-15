@@ -1,0 +1,13 @@
+A recommendation system requires a large collection of data of both media and users, to generate precise recommendations. In a finished system, some kind of persistence of data would be crucial to the system. Therefore we looked at different ways to persist data, and attempted to implement into the system.
+
+\subsubsection{NDatabase}
+
+NDatabase is an object database, and is relatively easy to approach. An object database is kind of an object-oriented database, being able to simply store objects, automatically preserving references, and doesn’t require creating query strings to store and access the data. Many of the hassles which comes with database is not present in NDatabase, and provides a simpler way to implement a database. \ref{NDatabase}
+
+Unfortunately, NDatabase had some unforeseen problems, which made it impossible for us to effectively use in the system. NDatabase was very slow, and had problems executing any functions once the data to be stored or retrieved became too high, going several days with no notable progress.
+
+\subsubsection{Serialization}
+
+To store our data persistently we have used serialization, which is a method of transforming data in objects or data structures to data that can be stored in a file\ref{Serialization}. We serialize to binary, while it’s effectively possible to serialize to any format we chose binary because it’s the simplest to deserialize and the only way it differs from other formats is that it’s unreadable to humans which is not that important to us. 
+
+We primarily need to have persistent data for the testing phase of our program. For the final product we would still want to store on disk so that we would be able to dynamically load the data we need into memory, that way we don’t have to have all of the data in memory at all times. This however would require an actual database and a dynamic loading algorithm to make sure speed is kept up. For the prototype, where we can decide how much data we want to have serializing the data and keeping all the data in memory for the lifespan of a test is sufficient.
