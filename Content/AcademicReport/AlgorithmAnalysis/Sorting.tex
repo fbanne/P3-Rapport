@@ -22,7 +22,7 @@ The most important part of the quicksort algorithm is the partition part, which 
 	\caption{The Quicksort algorithm}
 \end{algorithm}
 
-It shows the partition method which takes the set A, together with references to the lowest and the highest elements of the set p and r, respectively. Partition returns another reference q that points to the pivot chosen by the algorithm. The state of set A now is that all elements less than the element q points to is now on one side of q, while the elements which is higher is on the other side. Quicksort then runs itself recursively with the two new sets divided by q, where q is now sorted. The worst-case running time occurs if the chosen pivot element is also the highest element in the set every time quicksort is run. See Algorithm \ref{Partition} for the partition pseudo code.
+It shows the partition method which takes the set $A$, together with references to the lowest and the highest elements of the set $p$ and $r$, respectively. Partition returns another reference $q$ that points to the pivot chosen by the algorithm. The state of set $A$ now is that all elements less than the element $q$ points to is now on one side of $q$, while the elements which is higher is on the other side. Quicksort then runs itself recursively with the two new sets divided by $q$, where $q$ is now sorted. The worst-case running time occurs if the chosen pivot element is also the highest element in the set every time quicksort is run. See Algorithm \ref{Partition} for the partition pseudo code.
 
 \begin{algorithm}
 	\DontPrintSemicolon
@@ -42,7 +42,7 @@ It shows the partition method which takes the set A, together with references to
 	\caption{The Partition function for Quicksort}
 \end{algorithm}
 
-If the chosen pivot element is always the highest, the returned reference q will always be the last element in the set. This means that the recursive calls following the partition will run in respectively $n-1$ and $0$ time. If this happens through the whole course of the algorithm, the running time will be an arithmetic series\cite{AlgoAnal2},  which is $O(n^2)$.
+If the chosen pivot element is always the highest, the returned reference $q$ will always be the last element in the set. This means that the recursive calls following the partition will run in respectively $n-1$ and $0$ time. If this happens throughout the whole course of the algorithm, the running time will be an arithmetic series\cite{AlgoAnal2},  which is $O(n^2)$.
 
 \[
 n + (n-1) + (n-2) + ... + 2 + 1 + 0 = \frac{n(n + 1)}{2}  = \frac{n^2 + n}{2} = O(n^2)

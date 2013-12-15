@@ -1,23 +1,68 @@
-The collaborative side of the algorithm starts by receiving a single user, and afterwards get all different users put into a collection. With the IndexUsers method, there will be created a dictionary, which contains pairs of a user from the collection, together with a coefficient, based on the linear similarity between them and the main user. This coefficient is based on the Pearson correlation coefficient which has previously been described.
+The collaborative side of the algorithm starts by receiving a single user, and afterwards get all different users put into a collection. With the IndexUsers method, a dictionary is created, which contains pairs of a user from the collection, together with a coefficient, based on the linear similarity between them and the main user. This coefficient is based on the Pearson correlation coefficient which has previously been described in Section \ref{CollaborativeDes}.
 
-The two sets which is needed for each Pearson calculation, is the ratings of media items, which both the main user and secondary user have in common in their medialists. The Pearson calculation will then return a coefficient based on these two collections of ratings, indicating how similar they are in their ratings, and general rating habits. Following this, users with negative or no correlation will be removed, and the remaining is sorted by their given coefficient, going from highest to lowest. See figure [REF] for the Pearson calculation.
+\subsubsection{Pearson}
+
+The two sets which is needed for each Pearson calculation, is the ratings of media items, which both the main user and secondary user have in common in their medialists. The Pearson calculation will then return a coefficient based on these two collections of ratings, indicating how similar they are in their ratings, and general rating habits. Following this, users with negative or no correlation will be removed, and the remaining is sorted by their given coefficient, going from highest to lowest. See figure \ref{PearsonCalc} for the Pearson calculation.
+
 \begin{table}[htb]
 \centering
 \begin{tabular}{|l|l|l|l|l|} \hline
-	\textbf{X} & \textbf{Y} & \textbf{XY}
-	& \textbf{X2} & \textbf{Y2} \\ \hline
+	\textbf{$x$} & \textbf{$y$} & \textbf{$xy$}
+	& \textbf{$x^2$} & \textbf{$y^2$} \\ \hline
 	2 & 3 & 6 & 4 & 9 \\ \hline
 	4 & 5 & 20 & 16 & 25 \\ \hline
-	6 & 5 & 56 & 64 & 49 \\ \hline\hline
+	6 & 5 & 30 & 36 & 25 \\ \hline
+	8 & 7 & 56 & 64 & 49 \\ \hline\hline
 	20 & 20 & 112 & 120 & 108 \\ \hline
 \end{tabular}
 \caption{Pearson Example}
 \label{PearsonEx}
 \end{table} 
 
-In the above Table \ref{PearsonEx} is two sets of ratings, x and y, which is then put together to create 5 sums, which also can be seen above. These sums is then used as the parameters for the Pearson calculation, together will the number of pairs, which is 4. In this example Pearson will return 0,949, which is a very good coefficient.
+In the above example is two sets of ratings, $x$ and $y$, which is then put together to create 5 sums, which also can be seen above. These sums is then used as the parameters for the Pearson calculation, together with the number of pairs, which is 4. In this example Pearson returns 0,949, which is a very good coefficient. See Listing \ref{CompareUserPair} for the part of the algorithm which finds these ratings.
 
-The next part of the algorithm will take this sorted dictionary of users and coefficients, and begin extracting media for recommendations. It will start by looking at the user with the highest coefficient, and take media items which the main user does not have in their medialist, and the secondary user have rated higher than a certain threshold. Furthermore, if the same media occurs in other users medialists, it will receive a boost, putting it higher in the list. The same happens if the media was a friends medialist. See Figure \ref{CollaEx} for an illustration of this.
+\begin{lstlisting}[caption={The CompareUserPair method},label={CompareUserPair}]
+private double CompareUserPair(User mainUser, User user)
+{
+	List<int> mainRating = new List<int>();
+	List<int> userRating = new List<int>();
+	int x = 0, y = 0, xy = 0, x2 = 0, y2 = 0;
+
+	foreach (Media media in user.MediaList.Keys)
+	{
+		if (mainUser.MediaList.ContainsKey(media))
+		{
+			mainRating.Add(mainUser.MediaList[media]);
+			userRating.Add(user.MediaList[media]);
+		}
+	}
+
+	if (mainRating.Count() < 3)
+	{
+		return 0;
+	}
+
+	for (int i = 0; i < mainRating.Count; i++)
+	{
+		x += mainRating[i];
+		y += userRating[i];
+		xy += mainRating[i] * userRating[i];
+		x2 += (int)Math.Pow(mainRating[i], 2);
+		y2 += (int)Math.Pow(userRating[i], 2);
+	}
+
+	return Pearson(x, y, xy, x2, y2, mainRating.Count());
+}
+\end{lstlisting}
+
+The initial loop runs through the main users medialist, and if the secondary user have the same media in theirs, their ratings will be added to two lists. If this loop couldn’t find more than two media matches, the method will return 0. If you only have to sets of ratings, Pearson will always return either -1, 0, or 1, which is not a precise coefficient for how similar they, and may result in wrong recommendations. As seen in Section \ref{CollaborativeDes}, Pearson tries to make a line of best fit between two sets of data, and if there is only two points in their graph representation, the line will always be a perfect fit. 
+
+
+The parameters for the Pearsons calculation is then determined through another loop, if there was a enough rating pairs to work with. The result of Pearson will then be returned. Another problem with Pearson happens when all ratings extracted from one user is identical. For example, if every element in $y$ from Table \ref{PearsonEx} is 5. If this happens, Pearson cannot create a proper coefficient, and will return NaN, not a number. These users who is assigned NaN is later discarded. This may mean users with good coefficient can end up being ignored.
+
+\subsubsection{Recommendation Extraction}
+
+After every user have been assigned a coefficient, the next part of the algorithm begins. This part extracts media from the rated users medialists, and returns these media as recommendations. See Figure \ref{CollaEx} for an example of this process.
 
 \begin{figure}[htb]
 \centering
@@ -25,3 +70,7 @@ The next part of the algorithm will take this sorted dictionary of users and coe
 \caption{Example showing the collaborative selection process}
 \label{CollaEx}
 \end{figure}
+
+In the example, user A is the user which the algorithm is trying to generate recommendations for. User B and C have both been assigned a coefficient, where B’s coefficient is higher. The algorithm will begin adding media from B’s medialist he have rated higher than a certain threshold, to the collection which will be returned as the generated recommendations.
+
+Once the algorithm begins looking through user C, there have already been added several media to the recommendation list. Users with higher coefficients will always take precedence, and so does their media in the recommendation list. But, this may change in two scenarios: If the same media appears in an other users medialist, or if a user is friends with the main user. In the example, media 4 appears again, which boosts it up the recommendation list by one. Because C is friends with A, media 4 is boosted yet again by one. All other media is also boosted by one because of this friendship relation, effectively giving media from user C an advantage. Through this extraction the returned media follows three priorities: first by highest rated user, second by if the same media have already been added, and third by whether or not the user is a friend.
