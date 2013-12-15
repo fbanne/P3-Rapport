@@ -75,6 +75,9 @@
 % \setlength\parindent{0pt} % For at fjerne automatiske indrykninger
 % \let\clearpage\relax % For at fjerne alle clearpage sideskift
 
+%Lastpage command...
+\usepackage{lastpage}
+
 % Meta (til titelblad)
 % HUSK; at rette Jonas i titelbladet.
 \newcommand{\rtitle}{Media Recommendation} %<----
@@ -83,7 +86,7 @@
 \newcommand{\rdeadline}{20. Dec 2013} %<----Erstattes med rapportens deadline
 \newcommand{\rprints}{10} %<---- Erstattes med oplægsantal
 \newcommand{\rappendices}{2 + 1 CD} %<---- Erstattes med bilagsantal og art
-\newcommand{\rlastpage}{60} %<---- Erstattes med sideantal
+\newcommand{\rlastpage}{\pageref{LastPage}} %<---- Erstattes med sideantal
 
 %\newcommand{\code}[1]{\lstinline!#1!}
 \newcommand{\code}[1]{\lstinline{#1}} 
