@@ -1,0 +1,89 @@
+\subsubsection{Making the content-based recommender theoretically}
+- (Recommender Systems Handbook from p. 75)
+
+According to (Recommender Systems Handbook) the recommendation process performed in three steps:
+
+\textbf{Content analyzer}
+
+The first step towards a recommendation is to translate the items, from which the recommendations will be drawn, into a structured representation of the item. The source can either be documents, web pages, news or product descriptions. Extracting features of a movie or other media is straightforward but when presented with documents a more complex process of finding high value words is needed. (It will not be further discussed as it is not within the scope of this rapport)    
+ 
+\textbf{Profile learner}
+
+Next a similar process has to be made for the user. Data representative of the user has to be collected and translated into a similar structured representation. A users reactions, representing the items relevance, toward specific items has to be collected and stored. Those reactions together with the items, from which they are collected, are then used to construct the profile. The reactions could either be collected through automatic personalization or customization as described in the (link: Recommendation systems, background). Normal relevance information collected can either be:
+
+\emph{Boolean}, when users like/dislike items.
+
+\emph{Ratings}, when users rate the items. E.g. on a scale from 1 to 10.
+
+\emph{Text comments}, as used by Amazon.com when they request customer feedback on items. Other users can then later read the comments made by previous costumers. The customization has the advantage of being more simplistic but at the same time requires more actions from the user. The automatic personalization doesn't require active user feedback but can get biased information when the user is interrupted in the middle of a session from outside influences like a phone call.
+ 
+\textbf{Filtering component}
+At the last stage the user profile is matched with item representations and a relevance list is made with most to least relevant items. The top listed items the user hasn't already consumed can then be recommended to him or her.
+ 
+\subsubsection{Making the content-based recommender mathematically}
+- (Mining of Massive Datasets p. 76 and p. 292)
+
+\textbf{Content analyzer (Item profile)}
+
+According to "MMD" an item can be represented with a vector of 0's and 1's where each spot in the vector corresponds to an associated person, a genre or other feature. If a specific star is staring in the movie it gets a 1 in the spot corresponding to that star and 0's in spots corresponding to stars not in the movie. The vector can also implement non-boolean values if a movies average rating is included. (E.g. from IMDB.com using 1 to 10 scale rating system). But when using non-boolean values the scaling has to be considered. A rating of value 8 has a much higher weight than a "like"-value of 1.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{Images/Vector representation items.png}
+\caption{}
+\label{VrepItem}
+\end{figure}
+
+An example of 3 items are shown in \ref{VrepItem}. The entire row for item 3 becomes its vector representation where each position represents a specific feature.  
+ 
+\textbf{Profile learner (User profile)}
+
+We need to create matching vectors for the users with the same components so that a users vector and an item vector can be compared. But the user vector will not be made with booleans as they are to simple here. If we look at movies again there are 2 ways to make the vector. The simplest solution is, if a star has been in 20\% of the movies seen by a user, the movie gets a 0.2 in the spot corresponding to that star.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{Images/Vector representation Users.png}
+\caption{}
+\label{VrepUser}
+\end{figure}
+
+As shown in the \ref{VrepUser}, users vector representations are very similar to those of the items. The only change is the values and it is now possible to compare item 3 from [Figure.last] with user 3 to get a relevance judgment.
+
+But a more precise solution is to take into account what rating the user gave the movies, the before mentioned star was in. The ratings can be further normalized from the users average rating by substracting the average rating from the specific rating.
+
+Example:
+User 1 gives an average rating of 3 and has rated the 3 movies from before 3, 4 and 5. He will then get the value:
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{Images/User feature 1.png}
+\caption{}
+\label{Feature1}
+\end{figure}
+
+User 2 gives an average rating of 4 and has rated 3 movies 2, 3 and 5. He gets the value:
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{Images/User feature 2.png}
+\caption{}
+\label{Feature2}
+\end{figure}
+
+This way it is possible to get negative values for actors starring in movies the user doesn't like.
+
+ 
+\textbf{Filtering component}
+
+Now with the vector representations for items and for the user, the degree of relevance of an item can be computed as the angle between the item and the users vectors using the cosine distance algorithm. It is worth noting that the cosine distance algorithm isn't affected by 0's corresponding to e.g. a genre the movie isn't part of. The cosine distance is calculated from the dot-product divided by the multiple of the lengths of each vector:
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{Images/Cosine simularity.png}
+\caption{}
+\label{Cosine}
+\end{figure}
+
+If the more precise solution is used to generate the user profile from which we compute the cosine distance, we will for movies with many features (e.g. actors, genres) the user likes, get a large positive fraction implying an angle close to 0. When compared with items with a good spread of liked features and disliked features we will get a cosine distance close to 0 implying an angle close to 90 degrees and for the items with a lot of disliked features the cosine distance will be a large negative fraction implying an angle close to 180 degrees.
+
+
