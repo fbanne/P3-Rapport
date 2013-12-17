@@ -2,7 +2,7 @@ The application-domain is how various actors interact with the system, and throu
 
 \subsubsection{Actors \& Use Cases}
 
-For this system there is only two kind of actors: The ‘user’, and what has been named call the ‘updater’.
+For this system there is only two kind of actors: The ‘user’, and what has been named the ‘updater’.
 
 The user is the general media interested person who uses the system to find media which he might be interested in, which is his purpose in the context of the system. He has a medialist, where he rates and indicates media, which he has consumed. He also have a friendlies where he makes connections with other people he know, or through their common interest. The unique characteristic of a user is their medialist and preferences, which can alter the recommendations process, generating different results.
 
@@ -37,7 +37,7 @@ The following two figures shows patterns of use, indicate/rate media, and update
 \label{IndicateMedia}
 \end{figure}
 
-The indicate/rate media use case is initiated by the user, when the user in questions wants to add a piece of media, together with a rating, to their medialist. The user inserts the title of a media, or some other defining characteristic, which then have to be confirmed before the use case begins to check whether or not the piece of media exists in the systems collections. If the media was not in the collection, the use case will stop. If they media was, it will wait for the user to indicate his rating for the media, and will then finish the use case by saving it in the users medialist. Involved objects include the media interested person, and the media objects.
+The indicate/rate media use case is initiated by the user, when the user in questions wants to add a piece of media, together with a rating, to their medialist. The user inserts the title of a media, or some other defining characteristic, which then have to be confirmed before the use case begins to check whether or not the piece of media exists in the systems collections. If the media was not in the collection, the use case will stop. If the media was, it will wait for the user to indicate his rating for the media, and will then finish the use case by saving it in the users medialist. Involved objects include the media interested person, and the media objects.
 
 \begin{figure}[htb]
 \centering
@@ -50,7 +50,7 @@ The update media collection is either initiated in a certain interval, or when n
 
 \subsubsection{Functions}
 
-Functions is the methods which is stands for most of the systems processing of data, and makes it possible for actors to communicate with the model of the system, through this function layer. Functions can include any of the patterns of use which has already been described, but there can also be additional functions, depending on the context of the system. For this system, there is a function called ‘Generate Recommendations’, which was excluded from the patterns of use on this case, but is still very crucial for the system. 
+Functions is the methods which stands for most of the systems processing of data, and makes it possible for actors to communicate with the model of the system, through this function layer. Functions can include any of the patterns of use which has already been described, but there can also be additional functions, depending on the context of the system. For this system, there is a function called ‘Generate Recommendations’, which was excluded from the patterns of use on this case, but is still very crucial for the system. 
 
 Functions are divided into four types: Update, read, calculate, and signal.
 \begin{itemize}
