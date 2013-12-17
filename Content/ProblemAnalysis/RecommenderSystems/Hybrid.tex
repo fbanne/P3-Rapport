@@ -1,4 +1,4 @@
-According to (The Adaptive Web) there are 7 most commonly used implementations of hybrid recommendation systems. These implementations can be split into 3 groups.
+According to \cite{TheAdaptiveWeb} there are 7 most commonly used implementations of hybrid recommendation systems. These implementations can be split into 3 groups.
 
 \begin{itemize}
 \item Weighted
@@ -17,8 +17,9 @@ The second group consists of the feature combination and feature augmentation wh
 The last group consists of the cascade and the meta-level hybrids. They specialize by working in succession thereby strengthening each other's candidates. This can be a good way to get a higher precision if the first recommender ties a score on several items. Then the second recommender can take those as input and do further work on them. 
 
 \subsubsection{Weighted, switching and mixed hybrids} 
-We chose to look closer at the first group of hybrids as we came to the conclusion that these were within our capabilities and would satisfy our needs when recommending media. (Good enough?)
-//
+We chose to look closer at the first group of hybrids as we came to the conclusion that these were within our capabilities and would satisfy our needs when recommending media.
+
+
 \textbf{The weighted hybrid}
 
 \begin{figure}[H]
@@ -28,7 +29,8 @@ We chose to look closer at the first group of hybrids as we came to the conclusi
 \label{Weighted}
 \end{figure}
 As shown in \ref{Weighted} the weighted hybrid works by letting each recommender attach a score to their candidates and the candidates combined score is calculated. The top scoring candidates are then presented to the user. 
-//
+
+
 \textbf{The mixed hybrid}
 
 \begin{figure}[H]
@@ -38,7 +40,8 @@ As shown in \ref{Weighted} the weighted hybrid works by letting each recommender
 \label{Mixed}
 \end{figure}
 As shown in \ref{Mixed} the mixed hybrid combines the candidates from each recommender into pairs and presents them to the user without trying to work the results further.
-//
+
+
 \textbf{The switching hybrid}
 
 \begin{figure}[H]
