@@ -64,13 +64,24 @@ The parameters for the Pearsons calculation is then determined through another l
 
 After every user have been assigned a coefficient, the next part of the algorithm begins. This part extracts media from the rated users medialists, and returns these media as recommendations. See Figure \ref{CollaEx} for an example of this process.
 
-\begin{figure}[htb]
+\begin{figure}[H]
 \centering
-\includegraphics[width=0.8\textwidth]{Images/CollaborativeRecExample.png}
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=.9\linewidth]{Images/CollaborativeRecExample1.png}
+  \caption{}
+  \label{fig:collarec1}
+\end{subfigure}%
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=.9\linewidth]{Images/CollaborativeRecExample2.png}
+  \caption{}
+  \label{fig:collarec2}
+\end{subfigure}
 \caption{Example showing the collaborative selection process}
 \label{CollaEx}
 \end{figure}
 
-In the example, user A is the user which the algorithm is trying to generate recommendations for. User B and C have both been assigned a coefficient, where B’s coefficient is higher. The algorithm will begin adding media from B’s medialist he have rated higher than a certain threshold, to the collection which will be returned as the generated recommendations.
+In the example, user A is the user which the algorithm is trying to generate recommendations for. User B and C have both been assigned a coefficient, where B’s coefficient is higher. The algorithm will begin adding media from B’s medialist he have rated higher than a certain threshold, to the collection which will be returned as the generated recommendations as seen on figure \ref{fig:collarec1}.
 
-Once the algorithm begins looking through user C, there have already been added several media to the recommendation list. Users with higher coefficients will always take precedence, and so does their media in the recommendation list. But, this may change in two scenarios: If the same media appears in an other users medialist, or if a user is friends with the main user. In the example, media 4 appears again, which boosts it up the recommendation list by one. Because C is friends with A, media 4 is boosted yet again by one. All other media is also boosted by one because of this friendship relation, effectively giving media from user C an advantage. Through this extraction the returned media follows three priorities: first by highest rated user, second by if the same media have already been added, and third by whether or not the user is a friend.
+Once the algorithm begins looking through user C, there have already been added several media to the recommendation list as seen on \ref{fig:collarec2}. Users with higher coefficients will always take precedence, and so does their media in the recommendation list. But, this may change in two scenarios: If the same media appears in an other users medialist, or if a user is friends with the main user. In the example, media 4 appears again, which boosts it up the recommendation list by one. Because C is friends with A, media 4 is boosted yet again by one. All other media is also boosted by one because of this friendship relation, effectively giving media from user C an advantage. Through this extraction the returned media follows three priorities: first by highest rated user, second by if the same media have already been added, and third by whether or not the user is a friend.
