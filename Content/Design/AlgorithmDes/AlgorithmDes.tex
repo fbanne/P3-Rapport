@@ -1,6 +1,6 @@
-Through the previous analysis of different approaches to making a recommendation system it was recognized that it was needed to do a variation of the hybrid recommendation model, the hybrid model being a combination of the content-based and collaborative forms of recommendation. It was decided to approach it very departmentalized. This means the two methods won’t directly interfere with each other, which this leads to them remaining fairly simple while still getting the benefit of the hybrid model. This however also means the feedback loop will be slightly weaker. But with the gained simplicity the slight precision loss from the weaker feedback loop is, at least for this projects prototype, worth it.
+Through the previous analysis of different approaches to recommendation systems it was recognized that it was needed to do a variation of the hybrid recommendation model, the hybrid model being a combination of the content-based and collaborative forms of recommendation. It was decided to approach it very departmentalized. This means the two methods will not directly interfere with each other, which leads to them remaining fairly simple while still getting the benefit of the hybrid model. This however also means the feedback loop will be slightly weaker. With the gained simplicity the slight precision loss from the weaker feedback loop is, at least for this projects prototype, worth it.
 
-The algorithm ended up being split into three main steps. See Figure [REF]:
+The algorithm ended up being split into three main steps. See Figure \ref{GenRecAlgo}:
 \begin{itemize}
 	\item Collaborative filtering
 	\item Content-based filtering
