@@ -11,15 +11,16 @@ The first step towards a recommendation is to translate the items, from which th
 
 Next a similar process has to be made for the user. Data representative of the user has to be collected and translated into a similar structured representation. A users reactions, representing the items relevance, toward specific items has to be collected and stored. Those reactions together with the items, from which they are collected, are then used to construct the profile. The reactions could either be collected through automatic personalization or customization as described in the (link: Recommendation systems, background). Normal relevance information collected can either be:
 
-
-\textbf{Boolean}, when users like/dislike items.
-
-
-\textbf{Ratings}, when users rate the items. E.g. on a scale from 1 to 10.
+\begin{description}
+\item[Boolean] When users like/dislike items.
 
 
-\textbf{Text comments}, as used by Amazon.com when they request customer feedback on items. Other users can then later read the comments made by previous costumers. The customization has the advantage of being more simplistic but at the same time requires more actions from the user. The automatic personalization doesn't require active user feedback but can get biased information when the user is interrupted in the middle of a session from outside influences like a phone call.
- 
+\item[Ratings] When users rate the items. E.g. on a scale from 1 to 10.
+
+
+\item[Text comments] As used by Amazon.com when they request customer feedback on items. Other users can then later read the comments made by previous costumers. The customization has the advantage of being more simplistic but at the same time requires more actions from the user. The automatic personalization doesn't require active user feedback but can get biased information when the user is interrupted in the middle of a session from outside influences like a phone call.
+\end{description}
+
 \textbf{Filtering component}
 At the last stage the user profile is matched with item representations and a relevance list is made with most to least relevant items. The top listed items the user hasn't already consumed can then be recommended to him or her.
  
