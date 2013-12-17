@@ -1,12 +1,12 @@
-The recommendation algorithm which was created together with this project also utilizes a sorting algorithm to some degree, which is the OrderBy method made available by the .NET framework. OrderBy can be invoked through query expressions or lambda expressions on collections, and take as parameters elements, or properties from those elements, and a logical predicate for how the sorting should be done. \cite{AlgoAnal1}
+The recommendation algorithm which was created together with this project also utilizes a sorting algorithm, which is the OrderBy method made available by the .NET framework. OrderBy can be invoked through query expressions or lambda expressions on collections, and take as parameters elements, or properties from those elements and a logical predicate for how the sorting should be done. \cite{AlgoAnal1}
 
 \subsubsection{Quicksort}
 
-The actual sorting algorithm which OrderBy implements is a stable QuickSort algorithm, which maintain the relative order of elements which is equal in accordance with the predicate. OrderBy is used during the recommendations algorithm, both in the collaborative and content-based side of the algorithm, on the coefficient generated through both processes. The algorithm actually used the OrderByDescending version, which does the same thing, except in reserve order. What is important is the coefficients, which should be sorted so they highest coefficients is placed in the front.
+The actual sorting algorithm which OrderBy implements is a stable QuickSort algorithm, which maintain the relative order of elements which is equal in accordance with the predicate. OrderBy is used during the recommendations algorithm on the coefficient generated through both processes. The algorithm actually used the OrderByDescending version, which does the same thing except in reserve order. What is important is the coefficients, which should be sorted so the highest coefficients is placed in the front.
 
-Quicksort has a worst-case running time of $O(n^2)$, which is quite slow, but it is also very rare that quicksort encounters its worst-case scenario. Its average-case is much more likely, increasing its likelihood with the size of the collections quicksort is applied to, and has a running time of $O(nlgn)$.
+Quicksort has a worst-case running time of $O(n^2)$, which is quite slow but it is also very rare that quicksort encounters its worst-case scenario. Its average-case is much more likely increasing its likelihood with the size of the datasets quicksort is applied to, and has a running time of $O(nlgn)$.
 
-The most important part of the quicksort algorithm is the partition part, which divides the collection into two parts, based on a pivot element from the collection, which depends on the implementation of the algorithm. See Algorithm \ref{Quicksort} for the pseudo code.
+The most important part of the quicksort algorithm is the partition part, which divides the dataset into two parts based on a pivot element from the collection, which depends on the implementation of the algorithm. See Algorithm \ref{Quicksort} for the pseudo code.
 
 \begin{algorithm}
 	\DontPrintSemicolon
