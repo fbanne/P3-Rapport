@@ -1,6 +1,6 @@
 Search tools were developed to counter information overload. It refers to the difficulty a person can have understanding an issue and making decisions, that can be caused by the presence of too much information.(wikipedia)
 
-Traditional search engines, return the same result for the same query, regardless of who submitted it \cite{TheAdaptiveWeb}. Through personalization, the goal is to provide users with what they need without them asking for it explicitly and that is the essence of a recommendation system.
+Traditional search engines return the same result for the same query, regardless of who submitted it \cite{TheAdaptiveWeb}. Through personalization the goal is to provide users with what they need, without them asking for it explicitly and that is the essence of a recommendation system.
 
 To make the recommendations the system needs to have a profile on the user. A collection of data about the user that the system uses to calculate the recommendations from. There are two ways for the system to collect that information, either through automatic personalization or customization.
 
@@ -8,8 +8,8 @@ When building the profile using customization the user is prompted to fill in al
 
 The automatic personalization profiling on the other hand doesn't ask for input but automatically collects user behavior data while the user is browsing the website and it then tries to predict what the user would like based on that. An example of a website using automatic personalization is Amazon. The Amazon website stores information about items the user has clicked on and what items the user previously bought to try and calculate recommendations to the user. 	
    
-Personalization can be broken into a data collection phase and a learning phase. In the data collection phase user data is being collected and in the learning phase the user profile is created based on the collected data. The process of learning can either happen at the time the recommendations are needed and is called a memory based system or the learning phase can be pre-build so the profile has already been generated at the time it is needed called a model-based system.	
+Personalization can be broken into a data collection phase and a learning phase. In the data collection phase user data is being collected and in the learning phase the user profile is created based on the collected data. The process of learning can either happen at the time the recommendations are needed, this is called a memory based system or the learning phase can be pre-build so the profile has already been generated at the time it is needed called a model-based system.	
 
 The memory based system is not very scalable and will perform badly on a system with many users and items. But making the profile at the time it is needed makes it more adaptable as it is always build on the newest collected data.
 
-The model based system scales better than the memory based system because a big part of the learning phase has already been done offline when the recommendation is requested and will therefore be faster on a system with many users and items. 
+The model based system scales better than the memory based system because a big part of the learning phase has already been done in advance when the recommendation is requested and will therefore be faster on a system with many users and items. 
