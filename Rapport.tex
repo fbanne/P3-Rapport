@@ -19,12 +19,18 @@
 \thispagestyle{empty}
 \mbox{}
 
+\input{Preface}
+\thispagestyle{empty}
+\newpage
+\thispagestyle{empty}
+\mbox{}
+
 \addtocontents{toc}{\protect\enlargethispage{-35mm}} %lav en margin i bunden af den forste side af TOC
 \addtocontents{toc}{\protect\thispagestyle{empty}} % fjern fra første side af TOC
 \tableofcontents
 \thispagestyle{empty} %fjern sidetal for den anden side af TOC
 %Fix page counter
-\setcounter{page}{4}
+\setcounter{page}{6}
 
 %Indledning
 \relinput{Content/Introduction/IntroChapter}
