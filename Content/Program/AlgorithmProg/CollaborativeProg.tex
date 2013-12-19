@@ -2,7 +2,7 @@ The collaborative side of the algorithm starts by receiving a single user, and a
 
 \subsubsection{Pearson}
 
-The two sets that is needed for each Pearson calculation, is the ratings of media items, which both the main and secondary user have in common in their medialists. The Pearson calculation will then return a coefficient based on these two collections of ratings, indicating how similar they are in their ratings, and general rating habits. Following this, users with negative or no correlation will be removed, and the remaining is sorted by their given coefficient, going from highest to lowest. See Figure \ref{PearsonCalc} for the Pearson calculation.
+The two sets that is needed for each Pearson calculation, is the ratings of media items, which both the main and secondary user have in common in their medialist. The Pearson calculation will then return a coefficient based on these two collections of ratings, indicating how similar they are in their ratings, and general rating habits. Following this, users with negative or no correlation will be removed, and the remaining is sorted by their given coefficient, going from highest to lowest. See Figure \ref{PearsonCalc} for the Pearson calculation.
 
 \begin{table}[htb]
 \centering
@@ -19,7 +19,7 @@ The two sets that is needed for each Pearson calculation, is the ratings of medi
 \label{PearsonEx}
 \end{table} 
 
-In Table \ref{PearsonEx} is two sets of ratings, $x$ and $y$, which is then put together to create 5 sums, that also can be seen above. These sums is then used as the parameters for the pearson calculation, together with the number of pairs, which is 4. In this example pearson returns $0,949$, a very good coefficient. See Listing \ref{CompareUserPairTwo} for the part of the algorithm that finds these coefficients.
+In Table \ref{PearsonEx} is two sets of ratings, $x$ and $y$, which is then put together to create 5 sums, that also can be seen above. These sums is then used as the parameters for the Pearson calculation, together with the number of pairs, which is 4. In this example Pearson returns $0,949$, a very good coefficient. See Listing \ref{CompareUserPairTwo} for the part of the algorithm that finds these coefficients.
 
 \begin{lstlisting}[caption={The CompareUserPair method},label={CompareUserPairTwo}]
 private double CompareUserPair(User mainUser, User user)
@@ -55,10 +55,10 @@ private double CompareUserPair(User mainUser, User user)
 }
 \end{lstlisting}
 
-The initial loop runs through the main users medialist, and if the secondary user have the same media in their medialist, their ratings will be added to two lists. If this loop could not find more than two media matches, the method will return 0. If you only have two sets of ratings, pearson will always return either $-1$, $0$, or $1$, which is not a precise coefficient for how similar they, and may result in wrong recommendations. As seen in Section \ref{CollaborativeDes}, pearson tries to make a line of best fit between two sets of data, and if there is only two points in their graph representation, the line will always be a perfect fit. 
+The initial loop runs through the main users medialist, and if the secondary user have the same media in their medialist, their ratings will be added to two lists. If this loop could not find more than two media matches, the method will return 0. If you only have two sets of ratings, Pearson will always return either $-1$, $0$, or $1$, which is not a precise coefficient for how similar they, and may result in wrong recommendations. As seen in Section \ref{CollaborativeDes}, Pearson tries to make a line of best fit between two sets of data, and if there is only two points in their graph representation, the line will always be a perfect fit. 
 
 
-The parameters for the pearsons calculation is then determined through another loop, if there was enough rating pairs to work with. The result of Pearson will then be returned. Another problem with pearson happens when all ratings extracted from one user is identical. For example, if every element in $y$ from Table \ref{PearsonEx} is 5. If this happens, pearson cannot create a proper coefficient, and will return NaN, not a number. These users who is assigned NaN is later discarded. This may mean users with good coefficients can end up being ignored.
+The parameters for the Pearson's calculation is then determined through another loop, if there was enough rating pairs to work with. The result of Pearson will then be returned. Another problem with Pearson happens when all ratings extracted from one user is identical. For example, if every element in $y$ from Table \ref{PearsonEx} is 5. If this happens, Pearson cannot create a proper coefficient, and will return NaN, not a number. These users who is assigned NaN is later discarded. This may mean users with good coefficients can end up being ignored.
 
 \subsubsection{Recommendation Extraction}
 
