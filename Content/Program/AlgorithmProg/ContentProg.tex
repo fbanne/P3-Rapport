@@ -53,7 +53,7 @@ By comparing the vectors, you can generate a coefficient for how well a certain 
 \end{table}
 
 The comparison is done by using the cosine distance as described in Section \ref{ContentBasedDes}, and returns $-0.062$ for the first media item and $0.247$ for the second media item. During the content-based algorithm, every media the user have not already consumed, is assigned a coefficient through this method. The algorithm will then sort and choose the media with the highest coefficients, and returns them as its recommended media. See Listing \ref{CompareVector} for the part of the algorithm which calculates this coefficient.
-
+\newpage
 \begin{lstlisting}[caption={The CompareVectorRepresentations method},label={CompareVector}]
 private double CompareVectorRepresentations(List<double> userRepresentation, List<bool> mediaRepresentation, double userLength, double mediaLength)
 {
