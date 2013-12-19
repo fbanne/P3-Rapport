@@ -95,8 +95,8 @@
 \newcommand{\rperiod}{P3, 2013}
 \newcommand{\rdeadline}{20. Dec 2013} %<----Erstattes med rapportens deadline
 \newcommand{\rprints}{7} %<---- Erstattes med oplægsantal
-\newcommand{\rappendices}{\pagedifference{FirstAppendixPage}{LastPage}+ 1 CD} %<---- Erstattes med bilagsantal og art
-\newcommand{\rlastpage}{\pagedifference{LastPage}{\rappendices}} %<---- Erstattes med sideantal
+\newcommand{\rappendices}{\pagedifference{FirstAppendixPage}{LastPage}+2CD} %<---- Erstattes med bilagsantal og art
+\newcommand{\rlastpage}{\pageappendices{FirstAppendixPage}{LastPage}} %<---- Erstattes med sideantal
 
 %\newcommand{\code}[1]{\lstinline!#1!}
 \newcommand{\code}[1]{\lstinline{#1}} 
@@ -119,3 +119,6 @@
 \usepackage{refcount}
 \newcommand{\pagedifference}[2]{%
   \number\numexpr\getpagerefnumber{#2}-\getpagerefnumber{#1}\relax}
+
+\newcommand{\pageappendices}[2]{%
+  \number\numexpr\getpagerefnumber{#2}-(\getpagerefnumber{#2}-\getpagerefnumber{#1})\relax}
