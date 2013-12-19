@@ -95,8 +95,8 @@
 \newcommand{\rperiod}{P3, 2013}
 \newcommand{\rdeadline}{20. Dec 2013} %<----Erstattes med rapportens deadline
 \newcommand{\rprints}{7} %<---- Erstattes med oplægsantal
-\newcommand{\rappendices}{2 + 1 CD} %<---- Erstattes med bilagsantal og art
-\newcommand{\rlastpage}{\pageref{LastPage}} %<---- Erstattes med sideantal
+\newcommand{\rappendices}{\pagedifference{FirstAppendixPage}{LastPage}+ 1 CD} %<---- Erstattes med bilagsantal og art
+\newcommand{\rlastpage}{\pagedifference{LastPage}{\rappendices}} %<---- Erstattes med sideantal
 
 %\newcommand{\code}[1]{\lstinline!#1!}
 \newcommand{\code}[1]{\lstinline{#1}} 
@@ -115,3 +115,7 @@
 %Forside stuff
 \definecolor{Sapphire}{RGB}{28,117,188}
 %\usepackage[x11names,rgb,usenames,dvipsnames,svgnames,table]{xcolor}¨
+
+\usepackage{refcount}
+\newcommand{\pagedifference}[2]{%
+  \number\numexpr\getpagerefnumber{#2}-\getpagerefnumber{#1}\relax}
