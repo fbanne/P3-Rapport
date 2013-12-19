@@ -1,4 +1,4 @@
-The content-based recommender design section is split into a more theoretical approach and a mathematical approach.
+The content-based recommender design section is split into a theoretical approach and a mathematical approach.
 
 \subsubsection{Making the content-based recommender theoretically}
 
@@ -6,7 +6,7 @@ According to \cite{RecSysHandbook} the recommendation process is performed in th
 
 \subsubsection{Analyzer}
 
-The first step towards a recommendation is to translate the items, from which the recommendations will be drawn, into a structured representation of the item. The source can either be documents, web pages, news or product descriptions. Extracting features of a movie or other media is straightforward, but when presented with documents a more complex process of finding high value words is needed. This will not be further discussed as it is not within the scope of this report.    
+The first step towards a recommendation is to translate the items, from which the recommendations will be drawn, into a structured representation of the item. The source can either be documents, web pages, news or product descriptions. Extracting features of a movie or other media is straightforward, but when presented with documents a more complex process of finding high value words is needed. This will not be further discussed in this report.    
  
 \subsubsection{Profile learner}
 
@@ -35,7 +35,7 @@ According to \cite{MoMDatasets} an item can be represented with a vector of 0's 
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.8\textwidth]{Images/Vectorrepresentationitems.png}
-\caption{}
+\caption{Shows features and items}
 \label{VrepItem}
 \end{figure}
 
@@ -49,13 +49,13 @@ We need to create matching vectors for the users with the same components so tha
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.8\textwidth]{Images/VectorrepresentationUsers.png}
-\caption{}
+\caption{Shows users and features}
 \label{VrepUser}
 \end{figure}
 
 As shown in Figure \ref{VrepUser}, user vector representations are very similar to those of the items. The only change is the values and it is now possible to compare item 3 from Figure \ref{VrepItem} with user 3 to get a relevance judgment.
 
-But a more precise solution is to take into account what rating the user gave the movies the before mentioned actor was in. The ratings can be further normalized from the users average rating by substracting the average rating from the specific rating.
+But a more precise solution is to take into account what rating the user gave the movies the before mentioned actor was in. The ratings can be further normalized from the users average rating by subtracting the average rating from the specific rating.
 
 Example:
 
@@ -64,7 +64,7 @@ User 1 gives an average rating of 3, across all the items he has rated and has r
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.4\textwidth]{Images/Userfeature1.png}
-\caption{}
+\caption{User 1 feature value}
 \label{Feature1}
 \end{figure}
 
@@ -73,7 +73,7 @@ User 2 gives an average rating of 4 and has rated 3 movies 2, 3 and 5. This can 
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.4\textwidth]{Images/Userfeature2.png}
-\caption{}
+\caption{User 2 feature value}
 \label{Feature2}
 \end{figure}
 
@@ -87,7 +87,7 @@ Now with the vector representations for items and for the user, the relevance of
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.8\textwidth]{Images/Cosinesimularity.png}
-\caption{}
+\caption{Cosine distance formula, from \ref{cosSimWiki}
 \label{Cosine}
 \end{figure}
 
