@@ -1,21 +1,21 @@
-The general running of this algorithm can be analysed using asymptotic notation, which can define both the worst and average-case running time of the algorithm. The running time of the loops in Algorithms \ref{IndexUsers} \ref{CompareUserPair} can be quite erratic, as it depends on how many media a specific user have added to their media lists. The if-structure within the second loop is also an erratic number of times during the algorithm, so it is hard to pinpoint the exact average-case running time.
+The running time of the algorithm can be analysed using asymptotic notation that defines both the worst and average-case running time of the algorithm. The running time of the loops in Algorithms \ref{IndexUsers} \ref{CompareUserPair} can be erratic, as it depends on how much media a specific user have added to his medialist. The if-structure within the second loop can also be erratic making it difficult to calculate the average-case running time.
 
-The running time is described using Big-O notation, with expressions indicating variables inside the algorithm. Big-O notation uses the following symbols:
+The running time is described using Big-O notation, with expressions indicating variables inside the algorithm. The Big-O notation uses the following symbols:
 \begin{itemize}
 	\item $O(n)$, an upper bound, indicating the highest running time possible.
 	\item $\Omega(n)$, a lower bound, indicating the lowest running time possible.
 	\item $\Theta(n)$, a tight bound, indicating both of the previous two running-times.
 \end{itemize}
 
-Fortunately, the worst-case running time is relatively easy to find. The worst-case would occur if every user have the exact same media indicated on their media lists. The worst-case running time is then all users in the system, except the user which the algorithm is generating recommendations for, times the subset of media which is available from all the users indicated media in their media lists. The upper bound of the algorithm can then be defined as:
+The worst-case running time is relatively easy to calculate. The worst-case occurs if every user have the exact same media indicated on their media lists. The worst-case running time is then all the users in the system, except the user in question, times the subset of media available from all the users media in their media lists. The upper bound of the algorithm can then be defined as:
 
 \[
 m(n-1) = mn - m = O(mn)
 \]
 
-Where $n$ is all users and $m$ is the available media. What can be derived from the algorithm is that no matter what all the users in the system will be processed, so the lower bound of the algorithm can be defined as $\Omega(n)$.
+Where $n$ is all users and $m$ is the available media. What can be derived from the algorithm is that all the users in the system will be processed, therefore the lower bound of the algorithm can be defined as $\Omega(n)$.
 
-The content-based part is similar, but is much more stable in its running time. The user is compared to all media in the system by comparing their vector representations, where the running time is dictated by the size of the media's vector. The algorithm will for each media go through the size of their vector representations, and because of the way the media vectors is constructed, as described in Section \ref{ContentBasedAlg}, the algorithm will run for every media times the longest media vector divided in half.
+The content-based part is similar but is much more stable in its running time. The user is compared to all media in the system by comparing their vector representations, where the running time is dictated by the size of the media's vector. The algorithm will for each media go through the size of their vector representations, and because of the way the media vectors are constructed, as described in Section \ref{ContentBasedAlg}, the algorithm will run for every media times the longest media vector divided in half.
 
 \[
 \frac{mn}{2} = \Theta(mn)

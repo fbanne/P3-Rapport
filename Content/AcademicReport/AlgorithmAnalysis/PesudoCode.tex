@@ -1,4 +1,4 @@
-Before the development of the recommendations algorithm, several pseudo code examples was created to try and formalize how the collaborative side the algorithm should work, implementing the theory described in Section \ref{CollaborativeDes}. In Algorithm \ref{IndexUsers} and \ref{CompareUserPair} you can see the two methods which does the bulk of the collaborative work.
+Before the development of the recommendation algorithm, several pseudo code examples was created to try and formalize how the collaborative side of the algorithm should work, implementing the theory described in Section \ref{CollaborativeDes}. In Algorithm \ref{IndexUsers} and \ref{CompareUserPair} you can see the two methods doing most of the collaborative calculations.
 
 \begin{algorithm}[H]
 	\DontPrintSemicolon
@@ -43,4 +43,5 @@ Before the development of the recommendations algorithm, several pseudo code exa
 	\caption{The CompareUserPair method}
 \end{algorithm}
 
-The content-based side of the algorithm works in a similar way, with the difference being the type of data which it works on. The collaborative part compares a users watched media with the watched media this user has in common with every other user in the system. The content-based part compares a vector representation of the user with every vector representations of media, which is of similar length.
+
+The content-based side of the algorithm works in a similar way, with the difference being the type of data it works on. The collaborative part compares a users consumed media with the consumed media this user has in common with every other user in the system. The content-based part compares a vector representation of the user with vector representations from media instead.
