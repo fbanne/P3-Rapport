@@ -2,16 +2,16 @@ The content-based part of the algorithm starts like the collaborative part by ge
 
 \subsubsection{Vectors}
 
-These vectors is dynamically updated, as new associated people enters the system. The genre part of the vector is static, and corresponds to the predefined genres available in the system. When a new associated person is being created in the system, the users' vectors is updated to accommodate this. This means that the user will always have a vector with the same length as the media with the most recently added associated person. See Figure \ref{VectorUpdate} for an example.
+These vectors are dynamically updated, as new associated people enters the system. The genre part of the vector is static and corresponds to the predefined genres available in the system. When a new associated person is being created in the system, the users' vectors are updated to accommodate this. This means that the user will always have a vector with the same length as the media with the most recently added associated person. See Figure \ref{VectorUpdate} for an example.
 
 \begin{figure}[htb]
 \centering
 \includegraphics[width=0.8\textwidth]{Images/VectorUpdate.png}
-\caption{Vector updates as new media is added}
+\caption{The vector updates as new media is added}
 \label{VectorUpdate}
 \end{figure}
 
-Each media is added to the collection one by one, with each addition all users in the system is updated as it is required. Red numbers indicate that the certain person was not already part of the vectors, and therefore had to be added to all the user vectors, and the certain media itself. Green numbers indicate the person already have a spot in the vectors, and therefore did not have to update all the user vectors.
+Each media is added to the collection one by one. With each addition all users in the system are updated as it is required. Red numbers indicate that the certain person was not already part of the vectors, and therefore had to be added to all the user vectors, and the certain media itself. Green numbers indicate that the person already have a spot in the vectors, and the user vectors will therefore not be updated.
 
 Users can change their vectors by adding media to their medialists. This process will convert the rating the user gave into a number, using the method seen in Listing \ref{ConvertRating}.
 
@@ -22,7 +22,7 @@ private double ConvertRating(double rating)
 }
 \end{lstlisting}
 
-The user can give a rating in the range of 0 til 10. The method will then return a number between -1 and 1, where -1 is 0 and 1 is 10. This number will then be added to the user vector in each corresponding spot where the added media has a 1. For an example, see Table \ref{AddMediaEx}.
+The user can give a rating in the range of 0 til 10. The method will then return a number between -1 and 1, where -1 corresponds to a rating of 0 and 1 corresponds to a rating of 10. This number will then be added to the user vector in each corresponding spot where the added media has a 1. For an example, see Table \ref{AddMediaEx}.
 
 \begin{table}[htb]
 \centering
@@ -35,11 +35,11 @@ The user can give a rating in the range of 0 til 10. The method will then return
 \label{AddMediaEx}
 \end{table}
 
-When a user adds media 3 and 2 which can be seen in Figure \ref{VectorUpdate}, and gives them a rating of 7 and 2, respectively. The 7 is converted into 0.4, and is added to the user vector corresponding to the media vector. The same happens with the other media, except it is a negative number. This is the result of a user giving a media item a low rating. The user vector should then be a representation of what he likes and dislikes.
+A user adds media 3 and 2 which can be seen in Figure \ref{VectorUpdate}, and gives them a rating of 7 and 2, respectively. The 7 is converted into 0.4, and is added to the user vector corresponding to the media vector. The same happens with the other media, except it is a negative number. This is the result of a user giving a media item a low rating. The user vector should then be a representation of what he likes and dislikes.
 
 \subsubsection{Vector Comparison}
 
-By comparing the vectors, you can generate a coefficient for how well a certain media suits the taste of a user. If the media hits a lot of the positive spots in the user vector, it will receive a high coefficient. Of course, it can also receive a low, or even a negative coefficient, if it hits negative spots in the user vector. See Table \ref{ContentEx} for an example using the previous user and media examples.
+By comparing the vectors, you can generate a coefficient for how well a certain media suits the tastes of a user. If the media hits a lot of the positive spots in the user vector, it will receive a high coefficient. Of course, it can also receive a low, or even a negative coefficient, if it hits negative spots in the user vector. See Table \ref{ContentEx} for an example using the previous user and media examples.
 
 \begin{table}[htb]
 \centering
@@ -74,4 +74,4 @@ private double CompareVectorRepresentations(List<double> userRepresentation, Lis
 }
 \end{lstlisting}
 
-The media vector is actually a list of booleans, rather than a list of doubles, like the user vector is. The loop will run for the length of the media vector, and will ignore anything past that point in the user vector, since it cannot hit any more common points. If any common points were found, the function will return the result of the cosine distance calculation. The lengths were determined prior to the call of the compare functions, and were passed as parameters.
+The media vector is a list of booleans, rather than a list of doubles, like the user vector is. The loop will run for the length of the media vector, and will ignore anything past that point in the user vector, since it cannot hit any more common points. If any common points were found, the function will return the result of the cosine distance calculation. The lengths were determined prior to the call of the compare functions, and were passed as parameters.
