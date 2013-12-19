@@ -1,16 +1,16 @@
-The application-domain is how various actors interact with the system, and through that controls, documents, and observes the problem-domain. Actors can be any exterior entity which is connected to the usage of the system, like people, but also includes external systems. These actors have various patterns of use available to be them, which lets them perform actions with the system.
+The application-domain is how various actors interact with the system, and through that controls, documents, and observes the problem-domain. Actors can be any exterior entity which is connected to the usage of the system, like people, but can also include external systems. These actors have various use cases available to be them, which lets them perform actions on the system.
 
 \subsubsection{Actors \& Use Cases}
 
-For this system there is only two kind of actors: The ‘user’, and what has been named the ‘updater’.
+For this system there are only two kinds of actors: The ‘user’, and what has been named the ‘updater’.
 
-The user is the general media interested person who uses the system to find media which he might be interested in, which is his purpose in the context of the system. He has a medialist, where he rates and indicates media, which he has consumed. He also have a friendlies where he makes connections with other people he know, or through their common interest. The unique characteristic of a user is their medialist and preferences, which can alter the recommendations process, generating different results.
+The user is the general media interested person who use the system to find media he might be interested in, which is his purpose in the context of the system. He has a medialist, where he rates and indicates media, which he has consumed. He also has a friends list where he makes connections with other people he know, or shares interests with. The unique characteristic of a user is his medialist and preferences, which can alter the recommendation process, generating different results.
 
-The updater is an external system. Its purpose is to update the media which the system has available to it, with information coming from various sources. This is done to keep the system updated for newly released media, and made available for the users to add to their medialists. The characteristic of an updater is the media type which it keeps track of, and the sources which it extracts these data from.
+The updater is an external system. Its purpose is to update the media which the system has available to it, with information coming from various sources. This is done to keep the system updated with newly released media, and is made available for the users to add to their medialists. The characteristic of an updater is the media types it keeps track of, and the sources it extracts these data from.
 
-The patterns of use is the various actions which is the actors can perform in the application-domain. The patterns of use for this is: See medialist, see friendlist, indicate/rate media, remove media, add friend, remove friend, update media collection. These have been made into a table, with actors, indicating which use case belongs to which actor. See Table \ref{UseTable}.
+The use cases is the various actions the actors can perform in the application-domain. The use cases include: See medialist, see friendlist, indicate/rate media, remove media, add friend, remove friend, and update media collection. These have been made into a table, with actors, indicating which use case belongs to which actor. See Table \ref{UseTable}.
 
-Among these you could also include a use case called ‘Generate recommendations’. This depends on how this use is actually activated, as it may not be the most sensible choice to have this available to all users. The more sensible choice would be to activate it in certain intervals, to avoid a user abusing the action, possible slowing or crashing the system from overwork. In this it will be excluded.
+Among these the use case 'Generate recommendations' could also be included. This depends on how this use case is activated, as it may not be the most sensible choice to have available to all users. The more sensible choice would be to activate it in certain intervals, to avoid a user abusing the action, possibly slowing or crashing the system. It will not be included in this use case table.
 
 \begin{table}[htb]
 \centering
@@ -28,16 +28,16 @@ Among these you could also include a use case called ‘Generate recommendations
 \label{UseTable}
 \end{table}
 
-The following two figures shows patterns of use, indicate/rate media, and update media collections. These two were singled out for being the more unique patterns of use among those available, and the more crucial among them. See the first Figure \ref{IndicateMedia} for the indicate/rate media use case, and Figure \ref{UpdateCollection} for the update media collection use case.
+The following two figures shows the use cases: indicate/rate media, and update media collections. These two were singled out for being the more unique patterns of use among those available, and the more important among them. See Figure \ref{IndicateMedia} for the indicate/rate media use case and Figure \ref{UpdateCollection} for the update media collection use case.
 
 \begin{figure}[htb]
 \centering
 \includegraphics[width=0.5\textwidth]{Images/IndicateMedia.png}
-\caption{Diagram of the Indicate/Rate media use case}
+\caption{Diagram of the Indicate/Rate Media use case}
 \label{IndicateMedia}
 \end{figure}
 
-The indicate/rate media use case is initiated by the user, when the user in questions wants to add a piece of media, together with a rating, to their medialist. The user inserts the title of a media, or some other defining characteristic, which then have to be confirmed before the use case begins to check whether or not the piece of media exists in the systems collections. If the media was not in the collection, the use case will stop. If the media was, it will wait for the user to indicate his rating for the media, and will then finish the use case by saving it in the users medialist. Involved objects include the media interested person, and the media objects.
+The indicate/rate media use case is initiated by the user, when he wants to add a piece of media, together with a rating, to his medialist. The user inserts the title of a media, which then have to be confirmed before the use case begins to check whether or not the piece of media exists in the systems collections. If the media was not in the collection, the use case will stop. If the media was, it will wait for the user to indicate his rating for the media, and will then finish the use case by saving it in the users' medialist. Involved objects include the media interested person, and the media objects.
 
 \begin{figure}[htb]
 \centering
@@ -46,21 +46,21 @@ The indicate/rate media use case is initiated by the user, when the user in ques
 \label{UpdateCollection}
 \end{figure}
 
-The update media collection is either initiated in a certain interval, or when new media content is detected available for the system. This case shows the former possibility. This use case starts by checking external collections upon being initiated, and will either end if no new media content was detected, or will begin retrieving said media content. After retrieving the media updated from the external collections, the use case will end by adding the media updates to the systems collections. Involved objects are several media objects.
+The update media collection is either initiated in a certain interval, or when new media content is detected available for the system. This case shows the former possibility. This use case starts by checking external collections upon being initiated, and will either end if no new media content was detected, or will begin retrieving said media content. After retrieving the media updates from the external collections, the use case will end by adding the media updates to the systems collections. Involved objects are several media objects. In the present prototype of the system the update media has to be initiated manually.
 
 \subsubsection{Functions}
 
-Functions is the methods which stands for most of the systems processing of data, and makes it possible for actors to communicate with the model of the system, through this function layer. Functions can include any of the patterns of use which has already been described, but there can also be additional functions, depending on the context of the system. For this system, there is a function called ‘Generate Recommendations’, which was excluded from the patterns of use on this case, but is still very crucial for the system. 
+Functions is the methods which stands for most of the systems processing of data, and makes it possible for actors to communicate with the model of the system, through this function layer. Functions can include any of the use cases which has already been described, but there can also be additional functions, depending on the context of the system. For this system, there is a function called ‘Generate Recommendations’, which was excluded from the use cases on this case, but is still very crucial for the system. 
 
-Functions are divided into four types: Update, read, calculate, and signal.
+Functions are divided into four types: Update, read, calculate, and signal functions.
 \begin{itemize}
 	\item Update Functions
 	\begin{itemize}
-		\item Indicate/Rate media, remove media, add friend, remove friend, update media collection.
+		\item Indicate/Rate media, remove media, add friend, remove friend, update media collection
 	\end{itemize}
 	\item Read Functions
 	\begin{itemize}
-		\item See media, see friends, search for
+		\item See media, see friends, search for media, and search for friends
 	\end{itemize}
 	\item Signal \& Calculate Functions
 	\begin{itemize}
@@ -68,9 +68,9 @@ Functions are divided into four types: Update, read, calculate, and signal.
 	\end{itemize}
 \end{itemize}
 
-In this context, the generate recommendations function can easily go as both a signal and calculate function, as it has properties of both kinds. It processes data from the model, and generates recommendations based on this data, and then makes it viewable for the user, through the ‘See media’ function. The function itself is activated by a signal, like the user logging into their account, or a planned interval, generating the recommendations outside of the users consent.
+In this context, the generate recommendations function can easily go as both a signal and calculate function, as it has properties from both. It processes data from the model, generates recommendations based on this data, and then makes it viewable for the user, through the ‘See media’ function. The function itself is activated by a signal, like the user logging into their account, or a planned interval, without being specifically requested by the user.
 
-These functions is then put into a table, indicating their function type, and determine the complexity of every function. See Table \ref{FuncTable}.
+The functions are shown in Table \ref{FuncTable}, showing their type and complexity.
 
 \begin{table}[htb]
 \centering
@@ -82,8 +82,8 @@ These functions is then put into a table, indicating their function type, and de
 	Remove Friend & Simple & Update \\ \hline
 	Update Media Collection & Complex & Update \\ \hline
 	See Media & Simple & Read \\ \hline
-	See friends & Simple & Read \\ \hline
-	Search For & Medium & Read \\ \hline
+	See Friends & Simple & Read \\ \hline
+	Search For Media/Friends & Medium & Read \\ \hline
 	Generate Recommendations & Very Complex & Signal/Calculation \\ \hline
 \end{tabular}
 \caption{Functions with their complexity and type}
