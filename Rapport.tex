@@ -51,14 +51,18 @@
 \relinput{Content/AcademicReport/AcademicReport}
 
 %Sources
+\clearpage
 \phantomsection
+\addcontentsline{toc}{chapter}{References}
 \bibliographystyle{unsrt}
-\bibliography{References}
+\bibliography{References}\label{FirstAppendixPage}
 
-\chapter*{Appendices}
+\clearpage
 \phantomsection
+\chapter*{Appendices}
 \addcontentsline{toc}{chapter}{Appendices}
-\appendix\label{FirstAppendixPage}
+\appendix
+
 \input{Appendix}
 
 
